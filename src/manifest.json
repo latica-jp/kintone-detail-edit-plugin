@@ -17,12 +17,14 @@
       "dist/config.js"
     ],
     "css": ["css/51-modern-default.css", "css/config.css"],
-    "required_params": ["message"]
+    "required_params": ["enabled"]
   },
   "name": {
-    "en": "kintone-plugin-template"
+    "en": "Detail Edit Plugin",
+    "ja": "レコード詳細編集プラグイン"
   },
   "description": {
-    "en": "kintone-plugin-template"
+    "en": "Automatically adds 'detail edit button' to the list page rows",
+    "ja": "一覧画面の各レコードに詳細画面で編集を行うボタンを追加するプラグインです。"
   }
 }

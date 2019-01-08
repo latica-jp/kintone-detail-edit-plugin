@@ -1,15 +1,19 @@
 <section class="settings">
-  <h2 class="settings-heading">Settings for kintone-plugin-template</h2>
-  <p class="kintoneplugin-desc">This message is displayed on the app page after the app has been updated.</p>
+  <h2 class="settings-heading">レコード詳細編集プラグイン設定</h2>
+  <p class="kintoneplugin-desc">
+    一覧画面の詳細表示ボタンの横に詳細画面で編集を行うボタンを追加します。
+  </p>
   <form class="js-submit-settings">
     <p class="kintoneplugin-row">
-      <label for="message">
-        Message:
-        <input type="text" class="js-text-message kintoneplugin-input-text">
-      </label>
+      <div class="kintoneplugin-input-checkbox">
+        <span class="kintoneplugin-input-checkbox-item">
+          <input type="checkbox" name="checkbox" value="enabled" id="js-checkbox-enabled" >
+          <label for="js-checkbox-enabled">有効にする</label>
+        </span>
+      </div>
     </p>
     <p class="kintoneplugin-row">
-        <button class="kintoneplugin-button-normal">Save</button>
+      <button class="kintoneplugin-button-normal">保存する</button>
     </p>
   </form>
 </section>
