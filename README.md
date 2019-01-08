@@ -52,3 +52,6 @@ npm run start
 
   - https://github.com/latica-jp/kintone-plugin-template.git
 
+## Licence
+
+MIT
