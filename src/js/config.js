@@ -1,25 +1,36 @@
-// jQuery は webpack でロードしている
-const PLUGIN_ID = kintone.$PLUGIN_ID;
+// jQuery, hyperapp を webpack でロード
+import Config from './Components/Config';
 
-const $form = $('.js-submit-settings');
-const $checkbox = $('#js-checkbox-enabled');
+const PLUGIN_ID = kintone.$PLUGIN_ID;
+const config = kintone.plugin.app.getConfig(PLUGIN_ID);
+
+const state = {
+  enabled: config.enabled === 'true',
+};
+
+const actions = {
+  toggleEnabled: () => state => ({ enabled: !state.enabled }),
+  submit: () => state => submitSettings(state),
+};
 
 const getSettingsUrl = () => {
   return '/k/admin/app/flow?app=' + kintone.app.getId();
 };
 
-const config = kintone.plugin.app.getConfig(PLUGIN_ID);
-// 設定文字列を boolean に変換
-$checkbox.prop('checked', config.enabled == 'true');
-
-$form.on('submit', e => {
-  e.preventDefault();
+const submitSettings = state => {
   kintone.plugin.app.setConfig(
     // 設定は文字列で保存
-    { enabled: $checkbox.prop('checked') ? 'true' : 'false' },
+    { enabled: state.enabled ? 'true' : 'false' },
     () => {
       alert('アプリを更新してプラグイン設定を反映してください');
       window.location.href = getSettingsUrl();
     }
   );
-});
+};
+
+hyperapp.app(
+  state,
+  actions,
+  Config,
+  document.getElementById('kintone-plugin-config')
+);
