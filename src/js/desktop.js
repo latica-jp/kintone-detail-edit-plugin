@@ -6,7 +6,7 @@ kintone.events.on('app.record.index.show', event => {
   if (config.enabled !== 'true') return;
 
   // いちばん左の列の横幅を拡げる
-  $('#view-list-data-gaia th:first-child').attr({ style: 'width: 64px;' });
+  $('#view-list-data-gaia th:first-child').attr({ style: 'width: 77px;' });
 
   // 詳細画面へのリンクを含むセル（＝いちばん左の列のセル）の配列を取得
   const $detailColumsCells = $('td[class*="detail-action-"]');
@@ -28,11 +28,13 @@ const createDetailEditLinkButton = element => {
   const $detailEditLink = $('<a></a>').append(
     $('<span></span>', { class: 'recordlist-edit-icon-gaia' })
   );
-  // 詳細画面へのリンクの href を取得する
-  const $detailLinkHref = $(element)
-    .find('a.recordlist-show-gaia')
-    .attr('href');
+  // 詳細画面へのリンクの参照を取得する
+  const $detailLinkRef = $(element).find('a.recordlist-show-gaia');
   // 詳細編集画面へのリンクの href を生成してリンクに適用する
-  $detailEditLink.attr({ href: `${$detailLinkHref}&mode=edit` });
+  $detailEditLink.attr({
+    href: `${$detailLinkRef.attr('href')}&mode=edit`,
+    class: $detailLinkRef.attr('class'),
+  });
+
   return $detailEditLink;
 };
